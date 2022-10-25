@@ -4,6 +4,7 @@ import Main from "../Layouts/Main";
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Main />
+        element: <Main />,
+        loader: () => fetch('https://edu-am10-server.vercel.app')
     }
 ])

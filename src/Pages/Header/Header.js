@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 
 export default function Header() {
     const [toggleBurger, setToggleBurger] = useState(false);
