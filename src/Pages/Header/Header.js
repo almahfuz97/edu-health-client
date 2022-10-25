@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 export default function Header() {
     const [toggleBurger, setToggleBurger] = useState(false);
 
+    // from auth context
+    const { user } = useContext(AuthContext)
+
+
+    //*** functions ***//
     const handleBurger = () => {
         console.log(toggleBurger);
         setToggleBurger((prev) => !prev);
@@ -11,7 +17,7 @@ export default function Header() {
 
     return (
         <div>
-            <nav className="p-4 border shadow-sm shadow-green-500 flex justify-between items-center">
+            <nav className="px-8 py-4 border shadow-sm shadow-green-500 flex justify-between items-center">
                 <div className=" flex items-center">
                     {/* <img src='logo192.png' alt="logo" className="w-10 mr-2" /> */}
                     <h1 className=" font-bold text-2xl text-green-500">Edu Health</h1>
@@ -21,7 +27,6 @@ export default function Header() {
                         } bg-slate-50  md:bg-transparent p-4 rounded`}
                 >
                     <li
-                        onClick={handleBurger}
                         className="mr-6 hover:text-purple-400 text-green-600 mb-2"
                     >
                         <NavLink
@@ -37,7 +42,6 @@ export default function Header() {
                     </li>
 
                     <li
-                        onClick={handleBurger}
                         className="mr-6 hover:text-purple-400 text-green-600 mb-2"
                     >
                         <NavLink
@@ -53,7 +57,6 @@ export default function Header() {
                     </li>
 
                     <li
-                        onClick={handleBurger}
                         className="mr-6 hover:text-purple-400 text-green-600"
                     >
                         <NavLink
@@ -69,7 +72,7 @@ export default function Header() {
                     </li>
 
                     <li
-                        onClick={handleBurger}
+
                         className="mr-6 hover:text-purple-400 text-green-600"
                     >
                         <NavLink
