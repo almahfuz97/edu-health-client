@@ -22,8 +22,8 @@ export default function Login() {
     }
     return (
         <div>
-            <div className=' mt-16 flex justify-center '>
-                <div className=' inline-block border p-8 mx-4 bg-slate-50 rounded-lg shadow-sm shadow-green-400 drop-shadow'>
+            <div className=' mt-16 mb-16 flex justify-center '>
+                <div className=' inline-block border p-8 mx-4 md:w-3/5 lg:w-1/3 bg-slate-50 rounded-lg shadow-sm shadow-green-400 drop-shadow'>
                     <h2 className='font-bold text-2xl text-green-500'>Login</h2>
                     <form className='mt-8 space-y-2'>
                         <label htmlFor="email" className='flex'>Email</label>

@@ -45,7 +45,7 @@ export default function Header() {
                         className="mr-6 hover:text-purple-400 text-green-600 mb-2"
                     >
                         <NavLink
-                            to={"/stats"}
+                            to={"/"}
                             className={({ isActive }) =>
                                 isActive
                                     ? "text-purple-400  ease duration-100"
@@ -60,7 +60,7 @@ export default function Header() {
                         className="mr-6 hover:text-purple-400 text-green-600"
                     >
                         <NavLink
-                            to={"/blog"}
+                            to={"/"}
                             className={({ isActive }) =>
                                 isActive
                                     ? "text-purple-400  ease duration-100"
