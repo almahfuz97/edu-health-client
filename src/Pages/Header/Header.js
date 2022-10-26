@@ -1,19 +1,32 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useLoaderData } from "react-router-dom";
+import { Navigate, NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 export default function Header() {
+    const navigate = useNavigate();
     const [toggleBurger, setToggleBurger] = useState(false);
 
+
     // from auth context
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
 
     //*** functions ***//
     const handleBurger = () => {
-        console.log(toggleBurger);
         setToggleBurger((prev) => !prev);
     };
+
+    // logout
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('logged out successfully')
+                navigate('/')
+            })
+            .catch(() => {
+
+            })
+    }
 
     return (
         <div>
@@ -74,22 +87,33 @@ export default function Header() {
                         </NavLink>{" "}
                     </li>
 
-                    <li
+                    {
+                        !user?.uid ?
+                            <li
+                                className="mr-6 hover:text-purple-400 text-green-600"
+                            >
+                                <NavLink
+                                    onClick={handleBurger}
+                                    to={"/login"}
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "text-purple-400  ease duration-100"
+                                            : "ease text-green-500 duration-100"
+                                    }
+                                >
+                                    Login
+                                </NavLink>{" "}
+                            </li>
+                            :
+                            <li
+                                onClick={handleLogOut}
+                                className="mr-6 cursor-pointer hover:text-purple-400 text-green-600"
+                            >
+                                Log Out
+                            </li>
+                    }
 
-                        className="mr-6 hover:text-purple-400 text-green-600"
-                    >
-                        <NavLink
-                            onClick={handleBurger}
-                            to={"/login"}
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "text-purple-400  ease duration-100"
-                                    : "ease text-green-500 duration-100"
-                            }
-                        >
-                            Login
-                        </NavLink>{" "}
-                    </li>
+
                 </ul>
                 {/* making hamburger */}
                 <div

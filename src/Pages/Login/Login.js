@@ -1,25 +1,45 @@
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { FaGoogle, FaGithub, FaSpinner } from 'react-icons/fa';
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 const googleProvider = new GoogleAuthProvider()
 
 export default function Login() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
     // from Auth context
-    const { googleSignIn } = useContext(AuthContext)
+    const { googleSignIn, user, loading } = useContext(AuthContext)
 
     // functions
     const handleGoogle = () => {
         googleSignIn(googleProvider)
             .then(result => {
-                console.log(result.user);
+                console.log(result.user, ' second')
+                console.log(from, ' second')
+                navigate(from, { replace: true })
+
             })
             .catch(err => { console.error(err) })
     }
+
+    console.log(from, ' second')
+    if (user?.uid) {
+        console.log('here')
+        return <Navigate to={from} replace={true} />
+    }
+    console.log(from, ' second')
+
+    if (!loading) {
+        console.log(loading)
+        return (<div className=' text-3xl text-center font-bold mt-16 flex justify-center animate-spin'> <FaSpinner></FaSpinner> </div>)
+    }
+    console.log(from, ' second')
+
     return (
         <div>
             <div className=' mt-16 mb-16 flex justify-center '>

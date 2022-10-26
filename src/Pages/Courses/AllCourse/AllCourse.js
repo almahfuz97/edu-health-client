@@ -18,10 +18,10 @@ export default function AllCourse() {
                             <GiCelebrationFire className=' text-3xl text-green-500'></GiCelebrationFire>
                         </div>
                         {
-                            courses.map(course => {
+                            courses.map((course, index) => {
                                 return (
-                                    <NavLink to={`/course/${course.id}`}>
-                                        <div key={course.title} className='hover:shadow-lg flex items-center justify-center space-x-2 text-green-500 rounded drop-shadow mb-2 p-4' >
+                                    <NavLink key={course.id} to={`/course/${course.id}`}>
+                                        <div className='hover:shadow-lg flex items-center justify-center space-x-2 text-green-500 rounded drop-shadow mb-2 p-4' >
                                             <FaHandPointRight className=' text-2xl'></FaHandPointRight>
                                             <h1 className=' text-xl text-green-500 '>{course.title}</h1>
                                         </div>
@@ -34,7 +34,7 @@ export default function AllCourse() {
                 <div className=' col-span-9'>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-8'>
                         {
-                            courses.map(course => <CourseCard key={course.title} course={course} />)
+                            courses.map((course, index) => <CourseCard key={`${course.title}${index}`} course={course} />)
                         }
                     </div>
 
