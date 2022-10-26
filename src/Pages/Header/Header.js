@@ -30,11 +30,12 @@ export default function Header() {
                         className="mr-6 hover:text-purple-400 text-green-600 mb-2"
                     >
                         <NavLink
+                            onClick={handleBurger}
                             to={"/courses"}
                             className={({ isActive }) =>
                                 isActive
                                     ? "text-purple-400  ease duration-100"
-                                    : "ease duration-100"
+                                    : "ease text-green-500 duration-100"
                             }
                         >
                             Courses
@@ -45,11 +46,12 @@ export default function Header() {
                         className="mr-6 hover:text-purple-400 text-green-600 mb-2"
                     >
                         <NavLink
-                            to={"/"}
+                            onClick={handleBurger}
+                            to={"/faq"}
                             className={({ isActive }) =>
                                 isActive
                                     ? "text-purple-400  ease duration-100"
-                                    : "ease duration-100"
+                                    : "ease text-green-500 duration-100"
                             }
                         >
                             FAQ
@@ -60,11 +62,12 @@ export default function Header() {
                         className="mr-6 hover:text-purple-400 text-green-600"
                     >
                         <NavLink
-                            to={"/"}
+                            onClick={handleBurger}
+                            to={"/blog"}
                             className={({ isActive }) =>
                                 isActive
                                     ? "text-purple-400  ease duration-100"
-                                    : "ease duration-100"
+                                    : "ease text-green-500 duration-100"
                             }
                         >
                             Blog
@@ -76,11 +79,12 @@ export default function Header() {
                         className="mr-6 hover:text-purple-400 text-green-600"
                     >
                         <NavLink
+                            onClick={handleBurger}
                             to={"/login"}
                             className={({ isActive }) =>
                                 isActive
                                     ? "text-purple-400  ease duration-100"
-                                    : "ease duration-100"
+                                    : "ease text-green-500 duration-100"
                             }
                         >
                             Login

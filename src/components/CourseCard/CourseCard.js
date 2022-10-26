@@ -5,7 +5,7 @@ export default function CourseCard({ course }) {
     const navigate = useNavigate();
     // functions 
     const handleClick = () => {
-        navigate(`course/${course.id}`)
+        navigate(`/course/${course.id}`)
     }
     return (
         <div className='shadow  drop-shadow hover:shadow-xl rounded-lg'>

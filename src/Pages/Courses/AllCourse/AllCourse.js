@@ -1,5 +1,7 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+import { FaHandPointRight } from 'react-icons/fa';
+import { GiCelebrationFire } from 'react-icons/gi';
+import { NavLink, useLoaderData } from 'react-router-dom'
 import CourseCard from '../../../components/CourseCard/CourseCard';
 
 export default function AllCourse() {
@@ -10,15 +12,20 @@ export default function AllCourse() {
             <div className='grid grid-cols-1 md:grid-cols-12'>
                 <div className=' col-span-3 flex justify-center'>
                     <div className=' w-full text-center'>
-                        <div>
-                            <h1 className='mt-4 font-bold'>All Courses</h1> <hr />
+                        <div className='flex items-center  justify-center mt-4 mb-4'>
+                            <GiCelebrationFire className=' text-3xl text-green-500'></GiCelebrationFire>
+                            <h1 className='mt-4 text-green-500 text-xl mx-2 font-bold'>All Courses</h1>
+                            <GiCelebrationFire className=' text-3xl text-green-500'></GiCelebrationFire>
                         </div>
                         {
                             courses.map(course => {
                                 return (
-                                    <div key={course.title} className='  mb-2 p-4' >
-                                        <h1 >{course.title}</h1>
-                                    </div>
+                                    <NavLink to={`/course/${course.id}`}>
+                                        <div key={course.title} className='hover:shadow-lg flex items-center justify-center space-x-2 text-green-500 rounded drop-shadow mb-2 p-4' >
+                                            <FaHandPointRight className=' text-2xl'></FaHandPointRight>
+                                            <h1 className=' text-xl text-green-500 '>{course.title}</h1>
+                                        </div>
+                                    </NavLink>
                                 )
                             })
                         }
