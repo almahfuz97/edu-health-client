@@ -9,9 +9,8 @@ export default function AuthProvider({ children }) {
     // hooks
     const [user, setUser] = useState()
     const [loading, setLoading] = useState(false)
-    console.log(user);
     // functions
-    const googleSignIn = (provider) => {
+    const providerSignIn = (provider) => {
         return signInWithPopup(auth, provider);
     }
 
@@ -19,6 +18,7 @@ export default function AuthProvider({ children }) {
     const logOut = () => {
         return signOut(auth);
     }
+
 
     // onAuthStateChanged
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function AuthProvider({ children }) {
         return () => unsubscribe();
     }, [])
 
-    const authInfo = { user, googleSignIn, loading, logOut }
+    const authInfo = { user, providerSignIn, loading, logOut }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

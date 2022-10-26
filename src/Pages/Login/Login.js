@@ -4,41 +4,45 @@ import { FaGoogle, FaGithub, FaSpinner } from 'react-icons/fa';
 import React, { useContext } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
-const googleProvider = new GoogleAuthProvider()
+const googleProvider = new GoogleAuthProvider();
+const gighubProvider = new GithubAuthProvider();
 
 export default function Login() {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
     // from Auth context
-    const { googleSignIn, user, loading } = useContext(AuthContext)
+    const { providerSignIn, githubSignIn, user, loading } = useContext(AuthContext)
 
     // functions
     const handleGoogle = () => {
-        googleSignIn(googleProvider)
+        providerSignIn(googleProvider)
             .then(result => {
-                console.log(result.user, ' second')
-                console.log(from, ' second')
                 navigate(from, { replace: true })
 
             })
             .catch(err => { console.error(err) })
     }
 
-    console.log(from, ' second')
+    const handleGithub = () => {
+        providerSignIn(gighubProvider)
+            .then(result => {
+
+                navigate(from, { replace: true })
+
+            })
+            .catch(err => { console.error(err) })
+    }
+
     if (user?.uid) {
-        console.log('here')
         return <Navigate to={from} replace={true} />
     }
-    console.log(from, ' second')
 
     if (!loading) {
-        console.log(loading)
         return (<div className=' text-3xl text-center font-bold mt-16 flex justify-center animate-spin'> <FaSpinner></FaSpinner> </div>)
     }
-    console.log(from, ' second')
 
     return (
         <div>
@@ -58,7 +62,7 @@ export default function Login() {
 
                         <button onClick={handleGoogle} className='border w-full p-2 mt-8 rounded hover:shadow-md shadow-green-400 drop-shadow text-slate-400 font-bold '>
                             <span className=' flex justify-center mb-1 text-red-400'> <FaGoogle /></span>  Continue with Google</button>
-                        <button className='border w-full p-2 mt-4 rounded hover:shadow-md shadow-green-400 drop-shadow text-slate-400 font-bold'>
+                        <button onClick={handleGithub} className='border w-full p-2 mt-4 rounded hover:shadow-md shadow-green-400 drop-shadow text-slate-400 font-bold'>
                             <span className=' flex justify-center mb-1 text-red-400'> <FaGithub /></span>
                             Continue with GitHub</button>
 
