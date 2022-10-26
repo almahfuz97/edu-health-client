@@ -20,6 +20,14 @@ export const router = createBrowserRouter([
                 element: <Register />,
             },
             {
+                path: '/blog',
+                element: <Register />,
+            },
+            {
+                path: '/faq',
+                element: <Register />,
+            },
+            {
                 path: '/courses',
                 element: <AllCourse />,
                 loader: () => fetch('https://edu-am10-server.vercel.app'),
@@ -29,6 +37,10 @@ export const router = createBrowserRouter([
                 element: <CourseDetails />,
                 loader: ({ params }) => fetch(`https://edu-am10-server.vercel.app/course/${params.id}`)
             },
+            {
+                path: '*',
+                element: <div>NotFound</div>
+            }
         ]
     },
 
