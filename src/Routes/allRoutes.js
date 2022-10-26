@@ -41,7 +41,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/premium/course/:id',
-                element: <PrivateRoute> <CheckOut></CheckOut> </PrivateRoute>
+                element: <PrivateRoute> <CheckOut></CheckOut> </PrivateRoute>,
+                loader: ({ params }) => fetch(`https://edu-am10-server.vercel.app/premium/course/${params.id}`)
             },
             {
                 path: '*',
