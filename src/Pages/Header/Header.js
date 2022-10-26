@@ -35,7 +35,7 @@ export default function Header() {
                     <h1 className=" font-bold text-2xl text-green-500">Edu Health</h1>
                 </div>
                 <ul
-                    className={`md:flex  md:visible absolute md:relative right-9 duration-500 md:mt-0  ${toggleBurger ? "mt-40" : "-mt-96"
+                    className={`md:flex z-50  md:visible absolute md:relative right-9 duration-500 md:mt-0  ${toggleBurger ? "mt-40" : "-mt-96"
                         } bg-slate-50  md:bg-transparent p-4 rounded`}
                 >
                     <li
