@@ -41,13 +41,13 @@ export default function Header() {
     }
     return (
         <div>
-            <nav className="px-8 py-4 border shadow-sm shadow-green-500 flex justify-between items-center">
+            <nav className="px-8 py-8 border shadow-sm shadow-green-500 flex justify-between items-center">
                 <div className=" flex items-center">
                     <img src={logo} alt="logo" className="w-12 mr-3" />
                     <h1 className=" font-bold text-2xl text-green-500">Edu Health</h1>
                 </div>
                 <ul
-                    className={`md:flex z-50 space-y-4 md:space-y-0 md:space-x-6  md:visible absolute md:relative right-9 duration-500 md:mt-0  ${toggleBurger ? "mt-40" : "-mt-96"
+                    className={`md:flex items-center z-50 space-y-4 md:space-y-0 md:space-x-5  md:visible absolute md:relative right-0 duration-500 md:mt-0 mt-96 md:mr-0  ${toggleBurger ? "mr-0" : "-mr-96"
                         } bg-slate-50  md:bg-transparent p-4 rounded`}
                 >
                     <li
@@ -62,7 +62,7 @@ export default function Header() {
                                     : "ease text-green-500 duration-100"
                             }
                         >
-                            Courses
+                            COURSES
                         </NavLink>{" "}
                     </li>
 
@@ -94,7 +94,7 @@ export default function Header() {
                                     : "ease text-green-500 duration-100"
                             }
                         >
-                            Blog
+                            BLOG
                         </NavLink>{" "}
                     </li>
 
@@ -120,7 +120,7 @@ export default function Header() {
                                 onClick={handleLogOut}
                                 className="mr-6 cursor-pointer hover:text-purple-400 text-green-600"
                             >
-                                Log Out
+                                LOG OUT
                             </li>
                     }
 
@@ -155,7 +155,7 @@ export default function Header() {
                 {/* making hamburger */}
                 <div
                     onClick={handleBurger}
-                    className=" md:hidden relative cursor-pointer"
+                    className=" md:hidden relative cursor-pointer p-2"
                 >
                     <div
                         className={`w-6 h-0.5  duration-300 mb-1 bg-green-500  ${toggleBurger

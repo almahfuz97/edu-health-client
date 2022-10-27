@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
+import Blog from "../Pages/Blog/Blog";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import AllCourse from "../Pages/Courses/AllCourse/AllCourse";
 import CourseDetails from "../Pages/Courses/CourseDetails/CourseDetails";
@@ -23,7 +24,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/blog',
-                element: <Register />,
+                element: <Blog />,
+                loader: () => fetch("https://edu-am10-server.vercel.app/blog")
             },
             {
                 path: '/faq',
