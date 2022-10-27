@@ -4,7 +4,7 @@ import Header from '../Pages/Header/Header'
 
 export default function Main() {
     return (
-        <div >
+        <div className='w-screen overflow-x-hidden'>
             <Header />
             <Outlet />
         </div>

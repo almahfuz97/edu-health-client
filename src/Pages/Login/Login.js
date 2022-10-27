@@ -35,7 +35,7 @@ export default function Login() {
             })
             .catch(err => {
                 console.log(err)
-                setError('User Not Found');
+                setError('User Not Found!');
             })
     }
 

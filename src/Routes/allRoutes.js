@@ -4,6 +4,7 @@ import Blog from "../Pages/Blog/Blog";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import AllCourse from "../Pages/Courses/AllCourse/AllCourse";
 import CourseDetails from "../Pages/Courses/CourseDetails/CourseDetails";
+import ErroPage from "../Pages/ErrorPage/ErroPage";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
@@ -48,7 +49,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '*',
-                element: <div>NotFound</div>
+                element: <ErroPage />
             }
         ]
     },

@@ -51,13 +51,13 @@ export default function Header() {
     // }
     return (
         <div>
-            <nav className="px-8 py-8 border shadow-sm shadow-green-500 flex justify-between items-center overflow-hidden">
+            <nav className="px-8 py-8 border shadow-sm shadow-green-500 flex justify-between items-center ">
                 <div onClick={handleLogoClick} className=" flex items-center cursor-pointer">
-                    <img src={logo} alt="logo" className="w-12 mr-3" />
-                    <h1 className=" font-bold text-2xl text-green-500">Edu Health</h1>
+                    <img src={logo} alt="logo" className="w-12 md:w-10 lg:w-12 mr-3" />
+                    <h1 className=" font-bold text-2xl md:text-xl lg:text-2xl text-green-500">Edu Health</h1>
                 </div>
                 <ul
-                    className={`md:flex items-center z-50 space-y-4 md:space-y-0 md:space-x-5  md:visible absolute md:relative right-0 duration-500 md:mt-0 mt-1 top-28 md:top-0 md:mr-0  ${toggleBurger ? "mr-0" : "-mr-96"
+                    className={`md:flex items-center md:opacity-100 md:visible  z-50 space-y-4 md:space-y-0 md:space-x-5 absolute md:relative right-0 duration-500 md:mt-0 mt-1 top-28 md:top-0 ${toggleBurger ? "visible opacity-100" : "opacity-0 md:opacity-100 invisible"
                         } bg-slate-50  md:bg-transparent p-4 rounded`}
                 >
                     <li
