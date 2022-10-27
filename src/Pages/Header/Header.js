@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Navigate, NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
+import logo from '../../assets/logo512.png'
 
 export default function Header() {
     const navigate = useNavigate();
     const [toggleBurger, setToggleBurger] = useState(false);
+    const [toggleMode, setToggleMode] = useState(false);
+    const [tooltip, setTooltip] = useState(false);
 
 
     // from auth context
@@ -27,19 +30,28 @@ export default function Header() {
             })
     }
 
+    // handle dark mode/ligh mode toggle
+    const handleToggleMode = () => {
+        setToggleMode(prev => !prev);
+    }
+
+    // handle tooltip
+    const handleTooltip = (num) => {
+        num === 0 ? setTooltip(true) : setTooltip(false);
+    }
     return (
         <div>
             <nav className="px-8 py-4 border shadow-sm shadow-green-500 flex justify-between items-center">
                 <div className=" flex items-center">
-                    {/* <img src='logo192.png' alt="logo" className="w-10 mr-2" /> */}
+                    <img src={logo} alt="logo" className="w-12 mr-3" />
                     <h1 className=" font-bold text-2xl text-green-500">Edu Health</h1>
                 </div>
                 <ul
-                    className={`md:flex z-50  md:visible absolute md:relative right-9 duration-500 md:mt-0  ${toggleBurger ? "mt-40" : "-mt-96"
+                    className={`md:flex z-50 space-y-4 md:space-y-0 md:space-x-6  md:visible absolute md:relative right-9 duration-500 md:mt-0  ${toggleBurger ? "mt-40" : "-mt-96"
                         } bg-slate-50  md:bg-transparent p-4 rounded`}
                 >
                     <li
-                        className="mr-6 hover:text-purple-400 text-green-600 mb-2"
+                        className=" hover:text-purple-400 text-green-600"
                     >
                         <NavLink
                             onClick={handleBurger}
@@ -55,7 +67,7 @@ export default function Header() {
                     </li>
 
                     <li
-                        className="mr-6 hover:text-purple-400 text-green-600 mb-2"
+                        className=" hover:text-purple-400 text-green-600"
                     >
                         <NavLink
                             onClick={handleBurger}
@@ -71,7 +83,7 @@ export default function Header() {
                     </li>
 
                     <li
-                        className="mr-6 hover:text-purple-400 text-green-600"
+                        className=" hover:text-purple-400 text-green-600"
                     >
                         <NavLink
                             onClick={handleBurger}
@@ -89,7 +101,7 @@ export default function Header() {
                     {
                         !user?.uid ?
                             <li
-                                className="mr-6 hover:text-purple-400 text-green-600"
+                                className=" hover:text-purple-400 text-green-600"
                             >
                                 <NavLink
                                     onClick={handleBurger}
@@ -112,8 +124,34 @@ export default function Header() {
                             </li>
                     }
 
+                    {/* user profile */}
+                    {
+                        user?.uid &&
+                        <li className="relative flex items-center ">
+                            <img onMouseLeave={() => handleTooltip(1)} onMouseEnter={() => handleTooltip(0)} src={user?.photoURL} alt="" className="w-8 rounded-full cursor-pointer " />
+
+                            <p className={`px-0 w-16 ${tooltip ? 'visible' : 'hidden'} text-xs bg-transparent drop-shadow font-bold absolute -translate-y-8`}>{user?.displayName}</p>
+
+                        </li>}
+
+                    {/* toggle mode, dark/light */}
+                    <li className=" flex text-green-500 space-x-2 ">
+                        <small>Light</small>
+                        <div className={` cursor-pointer relative 
+                        ${toggleMode ? 'bg-white' : 'bg-black'} 
+                        border h-6 w-12 rounded-full   `}>
+
+                            <div onClick={handleToggleMode}
+                                className={`${toggleMode ? 'bg-black' : 'bg-slate-200'} left-0 top-0 bottom-0 w-6 h-6 absolute  
+                            ${toggleMode ? 'translate-x-6' : 'traslate-x-0'} duration-500 rounded-full 
+                            `}>
+                            </div>
+                        </div>
+                        <small>Dark</small>
+                    </li>
 
                 </ul>
+
                 {/* making hamburger */}
                 <div
                     onClick={handleBurger}
