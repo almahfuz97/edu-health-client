@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import bg2 from '../../assets/bg2.jpg'
+
 
 export default function Home() {
     const navigate = useNavigate();

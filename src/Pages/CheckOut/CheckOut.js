@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Navigate, useLoaderData, useLocation } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider'
 
 export default function CheckOut() {

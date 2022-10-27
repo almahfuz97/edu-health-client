@@ -1,8 +1,7 @@
 import React from 'react'
-import { GiBassetHoundHead, GiPriceTag } from 'react-icons/gi';
+import { GiPriceTag } from 'react-icons/gi';
 import { BsHourglassSplit } from 'react-icons/bs';
-import { NavLink, useLoaderData, useNavigate } from 'react-router-dom'
-import CourseCard from '../../../components/CourseCard/CourseCard';
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
@@ -12,11 +11,7 @@ export default function CourseDetails() {
     const course = useLoaderData();
     const navigate = useNavigate();
 
-    const options = {
-        orientation: 'landscape',
-        unit: 'in',
-        format: [4, 2]
-    };
+
 
     // functions
     const handlePremiumClick = (course) => {
