@@ -39,15 +39,20 @@ export default function Header() {
     const handleTooltip = (num) => {
         num === 0 ? setTooltip(true) : setTooltip(false);
     }
+
+    // handleLogoClick
+    const handleLogoClick = () => {
+        navigate('/');
+    }
     return (
         <div>
             <nav className="px-8 py-8 border shadow-sm shadow-green-500 flex justify-between items-center">
-                <div className=" flex items-center">
+                <div onClick={handleLogoClick} className=" flex items-center cursor-pointer">
                     <img src={logo} alt="logo" className="w-12 mr-3" />
                     <h1 className=" font-bold text-2xl text-green-500">Edu Health</h1>
                 </div>
                 <ul
-                    className={`md:flex items-center z-50 space-y-4 md:space-y-0 md:space-x-5  md:visible absolute md:relative right-0 duration-500 md:mt-0 mt-96 md:mr-0  ${toggleBurger ? "mr-0" : "-mr-96"
+                    className={`md:flex items-center z-50 space-y-4 md:space-y-0 md:space-x-5  md:visible absolute md:relative right-0 duration-500 md:mt-0 mt-1 top-28 md:top-0 md:mr-0  ${toggleBurger ? "mr-0" : "-mr-96"
                         } bg-slate-50  md:bg-transparent p-4 rounded`}
                 >
                     <li
@@ -112,7 +117,7 @@ export default function Header() {
                                             : "ease text-green-500 duration-100"
                                     }
                                 >
-                                    Login
+                                    LOGIN
                                 </NavLink>{" "}
                             </li>
                             :
@@ -135,19 +140,19 @@ export default function Header() {
                         </li>}
 
                     {/* toggle mode, dark/light */}
-                    <li className=" flex text-green-500 space-x-2 ">
-                        <small>Light</small>
+                    <li className=" flex items-center text-green-500 space-x-2 ">
+                        <p>Light</p>
                         <div className={` cursor-pointer relative 
-                        ${toggleMode ? 'bg-white' : 'bg-black'} 
-                        border h-6 w-12 rounded-full   `}>
+                        bg-green-500 
+                        border h-6 w-12 rounded-full flex items-center  `}>
 
                             <div onClick={handleToggleMode}
-                                className={`${toggleMode ? 'bg-black' : 'bg-slate-200'} left-0 top-0 bottom-0 w-6 h-6 absolute  
+                                className={`${toggleMode ? 'bg-slate-700' : 'bg-slate-100'} w-6 h-6 absolute shadow 
                             ${toggleMode ? 'translate-x-6' : 'traslate-x-0'} duration-500 rounded-full 
                             `}>
                             </div>
                         </div>
-                        <small>Dark</small>
+                        <p>Dark</p>
                     </li>
 
                 </ul>

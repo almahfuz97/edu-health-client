@@ -12,17 +12,17 @@ export default function AllCourse() {
             <div className='grid grid-cols-1 md:grid-cols-12'>
                 <div className=' col-span-3 flex justify-center'>
                     <div className=' w-full text-center'>
-                        <div className='flex items-center  justify-center mt-4 mb-4'>
-                            <GiCelebrationFire className=' text-3xl text-green-500'></GiCelebrationFire>
-                            <h1 className='mt-4 text-green-500 text-xl mx-2 font-bold'>All Courses</h1>
-                            <GiCelebrationFire className=' text-3xl text-green-500'></GiCelebrationFire>
+                        <div className='flex items-center  justify-center mt-4 mb-4 bg-gradient-to-l from-transparent via-red-50 to-transparent'>
+                            <GiCelebrationFire className=' text-2xl text-green-500'></GiCelebrationFire>
+                            <h1 className='mt-4 text-green-500 text-xl mx-2 font-bold pb-4'>All Courses</h1>
+                            <GiCelebrationFire className=' text-2xl text-green-500'></GiCelebrationFire>
                         </div>
                         {
                             courses.map((course, index) => {
                                 return (
                                     <NavLink key={course.id} to={`/course/${course.id}`}>
-                                        <div className='hover:shadow-lg flex items-center justify-center space-x-2 text-green-500 rounded drop-shadow mb-2 p-4' >
-                                            <FaHandPointRight className=' text-2xl'></FaHandPointRight>
+                                        <div className='hover:shadow flex items-center justify-center space-x-2 text-green-500 rounded drop-shadow mb-2 p-4' >
+                                            <FaHandPointRight className=' text-xl'></FaHandPointRight>
                                             <h1 className=' text-xl text-green-500 '>{course.title}</h1>
                                         </div>
                                     </NavLink>
