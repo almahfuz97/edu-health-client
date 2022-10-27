@@ -7,7 +7,7 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 export default function Register() {
     //info from authcontext
-    const { user, loading, createUser } = useContext(AuthContext);
+    const { user, loading, createUser, setProfileInfo } = useContext(AuthContext);
     // react useForm hook
     const { register, watch, formState: { errors }, handleSubmit } = useForm({
         defaultValues: {
@@ -40,7 +40,9 @@ export default function Register() {
         createUser(data.email, data.password)
             .then(res => {
                 const usr = res.usr;
-                console.log('created', usr)
+                // set display name and photo url
+                setProfileInfo(data.fullName, data.photoUrl);
+
                 navigate(from2)
             })
             .catch(err => { console.error(err) })
@@ -75,7 +77,7 @@ export default function Register() {
 
                         {/* photo url input */}
                         <label htmlFor="" className='flex'>Photo URL</label>
-                        <input type="text" {...register('photoUrl', { required: 'This is required' })} className='border rounded p-3 flex w-full mb-2' />
+                        <input type="url" {...register('photoUrl', { required: 'This is required' })} className='border rounded p-3 flex w-full mb-2' />
                         {/* error message */}
                         <p className=' text-red-400 mb-2'>{errors.photoUrl?.message} </p>
 

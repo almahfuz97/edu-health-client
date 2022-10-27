@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Navigate, NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import logo from '../../assets/logo512.png'
+import { FaSpinner } from "react-icons/fa";
 
 export default function Header() {
     const navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function Header() {
 
 
     // from auth context
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut, loading } = useContext(AuthContext)
 
 
     //*** functions ***//
@@ -44,9 +45,13 @@ export default function Header() {
     const handleLogoClick = () => {
         navigate('/');
     }
+
+    // if (!loading) {
+    //     return (<div className=' text-3xl text-center font-bold mt-16 flex justify-center animate-spin'> <FaSpinner></FaSpinner> </div>)
+    // }
     return (
         <div>
-            <nav className="px-8 py-8 border shadow-sm shadow-green-500 flex justify-between items-center">
+            <nav className="px-8 py-8 border shadow-sm shadow-green-500 flex justify-between items-center overflow-hidden">
                 <div onClick={handleLogoClick} className=" flex items-center cursor-pointer">
                     <img src={logo} alt="logo" className="w-12 mr-3" />
                     <h1 className=" font-bold text-2xl text-green-500">Edu Health</h1>
@@ -103,6 +108,29 @@ export default function Header() {
                         </NavLink>{" "}
                     </li>
 
+                    {/* user profile */}
+                    {
+                        loading ?
+                            <li className={`relative flex items-center ${!user?.uid && 'hidden'}`}>
+                                <div className="relative flex items-center">
+                                    <img onMouseLeave={() => handleTooltip(1)} onMouseEnter={() => handleTooltip(0)} src={user?.photoURL} alt='' className="w-8 rounded-full cursor-pointer z-10 bg-transparent" />
+
+                                    {/* default profile pic if photo url has no valid pic */}
+                                    <img onMouseLeave={() => handleTooltip(1)} onMouseEnter={() => handleTooltip(0)} src="https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt='' className="w-8 rounded-full cursor-pointer absolute " />
+                                </div>
+
+
+                                <p className={`px-0 w-16 ${tooltip ? 'visible' : 'hidden'} text-xs bg-transparent drop-shadow font-bold absolute -translate-y-8`}>{user?.displayName}</p>
+
+                            </li>
+                            :
+                            <li>
+                                <div className=' text-2xl text-center font-bold flex justify-center animate-spin'> <FaSpinner></FaSpinner> </div>
+                            </li>
+
+                    }
+
+                    {/* login | logout */}
                     {
                         !user?.uid ?
                             <li
@@ -129,19 +157,9 @@ export default function Header() {
                             </li>
                     }
 
-                    {/* user profile */}
-                    {
-                        user?.uid &&
-                        <li className="relative flex items-center ">
-                            <img onMouseLeave={() => handleTooltip(1)} onMouseEnter={() => handleTooltip(0)} src={user?.photoURL} alt="" className="w-8 rounded-full cursor-pointer " />
-
-                            <p className={`px-0 w-16 ${tooltip ? 'visible' : 'hidden'} text-xs bg-transparent drop-shadow font-bold absolute -translate-y-8`}>{user?.displayName}</p>
-
-                        </li>}
-
                     {/* toggle mode, dark/light */}
                     <li className=" flex items-center text-green-500 space-x-2 ">
-                        <p>Light</p>
+                        <p>LIGHT</p>
                         <div className={` cursor-pointer relative 
                         bg-green-500 
                         border h-6 w-12 rounded-full flex items-center  `}>
@@ -152,7 +170,7 @@ export default function Header() {
                             `}>
                             </div>
                         </div>
-                        <p>Dark</p>
+                        <p>DARK</p>
                     </li>
 
                 </ul>
