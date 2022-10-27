@@ -5,6 +5,7 @@ import CheckOut from "../Pages/CheckOut/CheckOut";
 import AllCourse from "../Pages/Courses/AllCourse/AllCourse";
 import CourseDetails from "../Pages/Courses/CourseDetails/CourseDetails";
 import ErroPage from "../Pages/ErrorPage/ErroPage";
+import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
         element: <Main />,
         loader: () => fetch('https://edu-am10-server.vercel.app'),
         children: [
+            {
+                path: '/',
+                element: <Home />
+            },
             {
                 path: '/login',
                 element: <Login />,
