@@ -8,7 +8,7 @@ export default function CourseCard({ course }) {
         navigate(`/course/${course.id}`)
     }
     return (
-        <div className='shadow  drop-shadow hover:shadow-xl rounded-lg relative'>
+        <div className='shadow  drop-shadow  rounded-lg relative'>
             <div className='relative'>
                 <img src={course.img} alt="" className='w-full rounded-t-lg' />
                 <div className='bg-white shadow rounded p-10 absolute z-10 -translate-y-3/4 translate-x-5 '>

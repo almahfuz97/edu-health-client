@@ -38,6 +38,7 @@ export default function Header() {
 
     // handle tooltip
     const handleTooltip = (num) => {
+        console.log(num)
         num === 0 ? setTooltip(true) : setTooltip(false);
     }
 

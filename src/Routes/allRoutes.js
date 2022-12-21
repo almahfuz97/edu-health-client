@@ -46,7 +46,8 @@ export const router = createBrowserRouter([
             {
                 path: '/course/:id',
                 element: <CourseDetails />,
-                loader: ({ params }) => fetch(`https://edu-am10-server.vercel.app/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://edu-am10-server.vercel.app/course/${params.id}`),
+                errorElement: <ErroPage />
             },
             {
                 path: '/premium/course/:id',
@@ -57,7 +58,7 @@ export const router = createBrowserRouter([
                 path: '*',
                 element: <ErroPage />
             }
-        ]
+        ],
     },
 
 ])

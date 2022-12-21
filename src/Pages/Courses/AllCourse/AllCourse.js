@@ -7,6 +7,8 @@ import CourseCard from '../../../components/CourseCard/CourseCard';
 export default function AllCourse() {
     const courses = useLoaderData();
 
+    console.log('hello')
+
     return (
         <div className=''>
             <div className='grid grid-cols-1 md:grid-cols-12'>
